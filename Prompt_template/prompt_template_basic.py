@@ -1,0 +1,32 @@
+from langchain.prompts import ChatPromptTemplate
+from langchain_core.messages import HumanMessage
+
+
+# # Part 1: Create a chat prompt template using a template string
+# template = "Tell me a joke about {topic}."
+# prompt_template = ChatPromptTemplate.from_template(template)
+
+# print("----Prompt from template----")
+# prompt = prompt_template.invoke({"topic":"cats"})
+# print(prompt)
+
+
+# # Part 2: Prompt with multiple placeholders
+# template_multiple = """Your are a helpful assistant.
+# Human: Tell me a {adjective} story about a {animal}.
+# Assistant: """
+# prompt_multiple = ChatPromptTemplate.from_template(template_multiple)
+# prompt = prompt_multiple.invoke({"adjective":"funny","animal":"Dog"})
+# print("----Prompt with multiple palceholders----\n")
+# print(prompt)
+
+# Part 3: Prompt with system and Human messages (Tuple)
+
+messages = [
+    ("system","you are a comedian who tells joke about {topic}."),
+    ("human","Tell me a {joke_count} jokes."),
+]
+prompt_template = ChatPromptTemplate.from_messages(messages)
+prompt = prompt_template.invoke({"topic":"lawyers","joke_count":3})
+print("\n----Prompt with system and Human messages----\n")
+print(prompt)
